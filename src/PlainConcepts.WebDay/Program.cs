@@ -7,6 +7,8 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using PlainConcepts.WebDay.Infrastructure.DataContext;
+using PlainConcepts.WebDay.Infrastructure.Extensions;
 
 namespace PlainConcepts.WebDay
 {
@@ -14,9 +16,10 @@ namespace PlainConcepts.WebDay
     {
         public static void Main(string[] args)
         {
-            BuildWebHost(args).Run();
+            BuildWebHost(args)
+                .Migrate<WebDayDbContext>(c => c.Seed())
+                .Run();
         }
-
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()

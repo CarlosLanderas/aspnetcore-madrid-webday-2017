@@ -2,9 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>a7c970d1-10d5-4386-81b4-9dbfcdf00dc5</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="API\Users\Validation\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -14,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 

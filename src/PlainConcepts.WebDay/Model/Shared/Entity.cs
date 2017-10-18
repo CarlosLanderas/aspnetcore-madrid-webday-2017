@@ -7,7 +7,7 @@ namespace PlainConcepts.WebDay.Model.Shared
 {
     public class Entity
     {
-        public int Id { get; }
+        public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }

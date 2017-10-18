@@ -6,17 +6,36 @@ using PlainConcepts.WebDay.Model.Shared;
 
 namespace PlainConcepts.WebDay.Model
 {
-    public class Role: Entity
+    public class Role : Entity
     {
-        private Role() { }
-        public string Name { get; set; }
+        public static Role Admin = new Role(1, nameof(Admin));
+        public static Role Writer = new Role(2, nameof(Writer));
+        public static Role Reader = new Role(3, nameof(Reader));
 
-        public Role Create(string name)
+        public string Name { get; protected set; }
+
+        private Role(int id, string name)
         {
-            return new Role()
-            {
-                Name = name
-            };
+            Id = id;
+            Name = name;
+        }
+
+        public static IEnumerable<Role> List()
+        {
+            return new[] {Admin, Writer, Reader};
+        }
+
+        public static Role From(int id)
+        {
+            return List().FirstOrDefault(r => r.Id == id) ??
+                   throw new Exception($"{nameof(Role)} not found");
+        }
+
+        public static Role From(string name)
+        {
+            return List().FirstOrDefault
+                       (r => string.Equals(r.Name, name, StringComparison.CurrentCultureIgnoreCase)) ??
+                   throw new Exception($"{nameof(Role)} not found");
         }
     }
 }
