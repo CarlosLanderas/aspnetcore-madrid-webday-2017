@@ -37,7 +37,7 @@ namespace PlainConcepts.WebDay.API.Users
             _dbContext.UserRoles.AddRange(userRoles);
 
             await _dbContext.SaveChangesAsync();
-            return Created("api/users", new { ID = user.Id});
+            return Created($"api/user/{user.Id}", user.Id);
         }
 
         [HttpGet, Route("")]
