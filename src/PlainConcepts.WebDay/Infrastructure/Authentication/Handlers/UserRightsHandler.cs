@@ -18,7 +18,7 @@ namespace PlainConcepts.WebDay.Infrastructure.Authentication.Handlers
                         .Where(c => c.Type == ClaimTypes.Role)
                         .Select(r => r.Value);
             
-            if (roles.Contains(requirement.Role))
+            if(requirement.Roles.Intersect(roles).Any())
             {
                 context.Succeed(requirement);
                 return Task.FromResult(true);

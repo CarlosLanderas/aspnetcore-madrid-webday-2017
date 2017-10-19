@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PlainConcepts.WebDay.API.Users.Requests;
+using PlainConcepts.WebDay.Infrastructure.Authentication;
 using PlainConcepts.WebDay.Infrastructure.Authentication.Policies;
 using PlainConcepts.WebDay.Infrastructure.DataContext;
 using PlainConcepts.WebDay.Model;
@@ -24,8 +25,7 @@ namespace PlainConcepts.WebDay.API.Users
         }
 
         [HttpPost]
-        [Authorize(Policy = Policy.Admin)]
-        [Authorize(Policy = Policy.Writer)]
+        [Authorize(Policy = Actions.CreateUser)]
         public async Task<IActionResult> Create([FromBody] CreateUserRequest createRequest)
         {
 
@@ -41,6 +41,7 @@ namespace PlainConcepts.WebDay.API.Users
         }
 
         [HttpGet, Route("")]
+        [Authorize(Policy = Actions.ListUsers)]
         public async Task<IActionResult> GetAll(CancellationToken cancellationToken)
         {
             return Ok( await _dbContext.Users.Include("_userRoles").ToListAsync(cancellationToken));
