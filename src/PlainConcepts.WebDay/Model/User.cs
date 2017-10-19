@@ -8,21 +8,23 @@ namespace PlainConcepts.WebDay.Model
 {
     public class User : Entity
     {
-        private User(string name, string surname)
+        private User(string userName, string name, string surname)
         {
+            UserName = userName;
             Name = name;
             Surname = surname;
         }
         private User() { }
         public string Name { get; protected set; }
         public string Surname { get; protected set; }
-        public List<UserRole> Roles => _roles.ToList();
-        private List<UserRole> _roles = new List<UserRole>();
-        
+        public string UserName { get; protected set; }
+        private List<UserRole> _userRoles { get; set; } = new List<UserRole>();
 
-        public static User Create(string name, string surname)
+        public List<Role> Roles => _userRoles.Select(ur => Role.From(ur.RoleId)).ToList();
+
+        public static User Create(string userName, string name, string surname)
         {
-            return new User(name, surname);
+            return new User(userName, name, surname);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace PlainConcepts.WebDay.Model
         public static Role Admin = new Role(1, nameof(Admin));
         public static Role Writer = new Role(2, nameof(Writer));
         public static Role Reader = new Role(3, nameof(Reader));
-
+        
         public string Name { get; protected set; }
 
         private Role(int id, string name)

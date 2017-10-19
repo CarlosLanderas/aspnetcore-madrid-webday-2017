@@ -41,6 +41,10 @@ namespace PlainConcepts.WebDay.Infrastructure.DataContext
             var userEntity = modelBuilder.Entity<User>();
             userEntity.ToTable("Users");
             userEntity.HasKey(u => u.Id);
+            userEntity.Property(u => u.UserName)
+                .HasMaxLength(20)
+                .IsRequired();
+
             userEntity.Property(u => u.Id)
                 .ForSqlServerUseSequenceHiLo()
                 .IsRequired();
@@ -53,8 +57,7 @@ namespace PlainConcepts.WebDay.Infrastructure.DataContext
                 .HasMaxLength(50)
                 .IsRequired();
 
-            userEntity.Metadata.FindNavigation("Roles").SetPropertyAccessMode(PropertyAccessMode.Field);
-            
+            userEntity.Ignore(u => u.Roles);
             
             var roleEntity = modelBuilder.Entity<Role>();
             roleEntity.ToTable("Roles");
@@ -71,7 +74,7 @@ namespace PlainConcepts.WebDay.Infrastructure.DataContext
             userRoleEntity.HasKey(ur => new { ur.UserId, ur.RoleId });            
 
             userRoleEntity.HasOne(u => u.User)
-                .WithMany(u => u.Roles)
+                .WithMany("_userRoles")
                 .OnDelete(DeleteBehavior.Cascade)
                 .HasForeignKey(u => u.UserId)
                 .IsRequired();
