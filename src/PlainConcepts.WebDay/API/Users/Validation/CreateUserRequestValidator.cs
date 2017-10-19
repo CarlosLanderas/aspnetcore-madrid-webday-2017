@@ -12,6 +12,10 @@ namespace PlainConcepts.WebDay.API.Users.Validation
     {
         public CreateUserRequestValidator()
         {
+            RuleFor(r => r.UserName)
+                .NotEmpty()
+                .MaximumLength(20);
+
             RuleFor(r => r.Name)
                 .NotEmpty()
                 .MaximumLength(50);
