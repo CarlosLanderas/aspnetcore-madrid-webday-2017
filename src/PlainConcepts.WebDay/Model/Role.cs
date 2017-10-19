@@ -37,5 +37,15 @@ namespace PlainConcepts.WebDay.Model
                        (r => string.Equals(r.Name, name, StringComparison.CurrentCultureIgnoreCase)) ??
                    throw new Exception($"{nameof(Role)} not found");
         }
+
+        public static bool Contains(int id)
+        {
+            return List().Any(r => r.Id == id);
+        }
+
+        public static bool Contains(string name)
+        {
+            return List().Any(r => string.Equals(r.Name, name, StringComparison.CurrentCultureIgnoreCase));
+        }
     }
 }

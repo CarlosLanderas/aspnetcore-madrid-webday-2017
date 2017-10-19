@@ -68,11 +68,7 @@ namespace PlainConcepts.WebDay.Infrastructure.DataContext
 
             var userRoleEntity = modelBuilder.Entity<UserRole>();
             userRoleEntity.ToTable("UserRoles");
-            userRoleEntity.HasKey(ur => new { ur.UserId, ur.RoleId });
-            userRoleEntity.Property(ur => ur.RoleId)
-                .IsRequired();
-            userRoleEntity.Property(ur => ur.UserId)
-                .IsRequired();
+            userRoleEntity.HasKey(ur => new { ur.UserId, ur.RoleId });            
 
             userRoleEntity.HasOne(u => u.User)
                 .WithMany(u => u.Roles)

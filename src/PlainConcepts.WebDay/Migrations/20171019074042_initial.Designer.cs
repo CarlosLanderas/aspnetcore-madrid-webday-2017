@@ -11,7 +11,7 @@ using System;
 namespace PlainConcepts.WebDay.Migrations
 {
     [DbContext(typeof(WebDayDbContext))]
-    [Migration("20171018234935_initial")]
+    [Migration("20171019074042_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
