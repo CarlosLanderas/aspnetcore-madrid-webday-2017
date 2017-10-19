@@ -8,10 +8,10 @@ namespace PlainConcepts.WebDay.Infrastructure.Authentication.Requirements
 {
     public class UserLevelRequirement : IAuthorizationRequirement
     {
-        public string Role { get; }
-        public UserLevelRequirement(string role)
+        public string[] Roles { get; }
+        public UserLevelRequirement(string[] roles)
         {
-            Role = role;
+            Roles = roles;
         }
     }
 }
