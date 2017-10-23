@@ -12,6 +12,7 @@ using PlainConcepts.WebDay;
 using PlainConcepts.WebDay.Infrastructure.Authentication;
 using PlainConcepts.WebDay.Infrastructure.Authentication.Policies;
 using PlainConcepts.WebDay.Infrastructure.Authentication.Requirements;
+using PlainConcepts.WebDay.Infrastructure.Binders;
 using PlainConcepts.WebDay.Infrastructure.filters;
 
 namespace Microsoft.Extensions.DependencyInjection

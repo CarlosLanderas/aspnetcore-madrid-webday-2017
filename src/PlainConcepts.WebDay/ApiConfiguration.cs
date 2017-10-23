@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using PlainConcepts.WebDay.Infrastructure.Authentication;
 using PlainConcepts.WebDay.Infrastructure.Authentication.Handlers;
 using PlainConcepts.WebDay.Infrastructure.DataContext;
+using PlainConcepts.WebDay.Infrastructure.MIddleware;
 
 namespace PlainConcepts.WebDay
 {
@@ -58,10 +59,11 @@ namespace PlainConcepts.WebDay
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseMiddleware<TimingMiddleware>();
             app.Use(async (context, next) =>
             {
                 var logger = context.RequestServices.GetService<ILogger<ApiConfiguration>>();
-                logger.LogWarning($"Navigating to {context.Request.Path}");
+                logger.LogDebug($"Navigating to {context.Request.Path}");
                 await next();
             });
             app.UseAuthentication();

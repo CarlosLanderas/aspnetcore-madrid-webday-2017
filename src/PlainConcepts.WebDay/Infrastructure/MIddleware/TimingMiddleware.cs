@@ -4,16 +4,19 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace PlainConcepts.WebDay.Infrastructure.MIddleware
 {
     public class TimingMiddleware
     {
         private readonly RequestDelegate _next;
+        private readonly ILogger<TimingMiddleware> _logger;
 
-        public TimingMiddleware(RequestDelegate next)
+        public TimingMiddleware(RequestDelegate next, ILogger<TimingMiddleware> logger)
         {
             _next = next;
+            _logger = logger;
         }
 
         public async Task Invoke(HttpContext context)
@@ -21,7 +24,7 @@ namespace PlainConcepts.WebDay.Infrastructure.MIddleware
             var stopWatch = Stopwatch.StartNew();
             await _next(context);
             stopWatch.Stop();
-            Debug.WriteLine($"Request took {stopWatch.ElapsedMilliseconds} ms");
+            _logger.LogDebug($"Request took {stopWatch.ElapsedMilliseconds} ms");
         }
 
     }
