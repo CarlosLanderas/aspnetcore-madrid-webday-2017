@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
 using PlainConcepts.WebDay.Infrastructure.DataContext;
+using PlainConcepts.WebDay.Infrastructure.MIddleware;
 
 namespace PlainConcepts.WebDay
 {
@@ -37,6 +38,7 @@ namespace PlainConcepts.WebDay
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseMiddleware<TimingMiddleware>();
             app.UseMvc();
         }
     }
