@@ -57,6 +57,9 @@ namespace PlainConcepts.WebDay.Infrastructure.DataContext
                 .HasMaxLength(50)
                 .IsRequired();
 
+            userEntity.Property(u => u.CreatedAt)
+                .HasDefaultValueSql("GETDATE()");
+
             userEntity.Ignore(u => u.Roles);
             
             var roleEntity = modelBuilder.Entity<Role>();

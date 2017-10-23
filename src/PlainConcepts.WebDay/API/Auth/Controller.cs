@@ -26,7 +26,7 @@ namespace PlainConcepts.WebDay.API.Authentication
             _dbContext = dbContext;
         }
 
-        [HttpGet]
+        [HttpGet, Route("get-claims")]
         [Authorize]
         public IActionResult GetClaims()
         {

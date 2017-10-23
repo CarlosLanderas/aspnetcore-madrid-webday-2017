@@ -43,7 +43,9 @@ namespace PlainConcepts.WebDay.Migrations
                         .HasAnnotation("SqlServer:HiLoSequenceName", "EntityFrameworkHiLoSequence")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Name")
                         .IsRequired()

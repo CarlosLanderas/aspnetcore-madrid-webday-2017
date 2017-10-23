@@ -22,6 +22,15 @@ namespace PlainConcepts.WebDay.Model
 
         public List<Role> Roles => _userRoles.Select(ur => Role.From(ur.RoleId)).ToList();
 
+        public void AddRole(int roleId)
+        {
+            var role = Role.From(roleId);
+            if (_userRoles.All(r => r.RoleId != roleId))
+            {
+                var newUserRole = UserRole.Create(Id, Role.From(roleId).Id);
+                _userRoles.Add(newUserRole);
+            }
+        }
         public static User Create(string userName, string name, string surname)
         {
             return new User(userName, name, surname);

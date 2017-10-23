@@ -11,7 +11,7 @@ using System;
 namespace PlainConcepts.WebDay.Migrations
 {
     [DbContext(typeof(WebDayDbContext))]
-    [Migration("20171019203859_initial")]
+    [Migration("20171023065912_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,7 +44,9 @@ namespace PlainConcepts.WebDay.Migrations
                         .HasAnnotation("SqlServer:HiLoSequenceName", "EntityFrameworkHiLoSequence")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.SequenceHiLo);
 
-                    b.Property<DateTime>("CreatedAt");
+                    b.Property<DateTime>("CreatedAt")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Name")
                         .IsRequired()
