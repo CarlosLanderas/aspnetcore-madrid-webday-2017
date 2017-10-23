@@ -17,11 +17,11 @@ using PlainConcepts.WebDay.Infrastructure.DataContext;
 namespace PlainConcepts.WebDay.API.Authentication
 {
     [Route("api/token")]
-    public class Controller : ControllerBase
+    public class AuthController : ControllerBase
     {
         private readonly WebDayDbContext _dbContext;
 
-        public Controller(WebDayDbContext dbContext)
+        public AuthController(WebDayDbContext dbContext)
         {
             _dbContext = dbContext;
         }
