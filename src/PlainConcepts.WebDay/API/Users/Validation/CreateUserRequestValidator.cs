@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace PlainConcepts.WebDay.API.Users.Validation
 {
-    public class CreateUserRequestValidation: AbstractValidator<CreateUserRequest>
+    public class CreateUserRequestValidator: AbstractValidator<CreateUserRequest>
     {
-        public CreateUserRequestValidation()
+        public CreateUserRequestValidator()
         {
+            RuleFor(r => r.UserName)
+                .NotEmpty()
+                .MaximumLength(20);
+
             RuleFor(r => r.Name)
                 .NotEmpty()
                 .MaximumLength(50);

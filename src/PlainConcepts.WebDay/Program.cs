@@ -22,7 +22,7 @@ namespace PlainConcepts.WebDay
         }
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
+                .UseStartup<ApiConfiguration>()
                 .Build();
     }
 }

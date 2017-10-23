@@ -11,7 +11,7 @@ using System;
 namespace PlainConcepts.WebDay.Migrations
 {
     [DbContext(typeof(WebDayDbContext))]
-    [Migration("20171019074042_initial")]
+    [Migration("20171019203859_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -54,6 +54,10 @@ namespace PlainConcepts.WebDay.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -80,7 +84,7 @@ namespace PlainConcepts.WebDay.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PlainConcepts.WebDay.Model.User", "User")
-                        .WithMany("Roles")
+                        .WithMany("_userRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

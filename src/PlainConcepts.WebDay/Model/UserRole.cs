@@ -12,8 +12,10 @@ namespace PlainConcepts.WebDay.Model
             UserId = userId;
             RoleId = roleId;
         }
+
+        private UserRole() { }
         public int UserId { get; protected set; }
-        public User User { get; set; }
+        public User User { get; protected set; }
         public int RoleId { get; protected set; }
         public Role Role { get; set; }
 

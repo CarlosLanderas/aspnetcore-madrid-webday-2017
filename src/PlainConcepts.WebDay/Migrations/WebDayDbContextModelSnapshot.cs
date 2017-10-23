@@ -53,6 +53,10 @@ namespace PlainConcepts.WebDay.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(20);
+
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -79,7 +83,7 @@ namespace PlainConcepts.WebDay.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("PlainConcepts.WebDay.Model.User", "User")
-                        .WithMany("Roles")
+                        .WithMany("_userRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
