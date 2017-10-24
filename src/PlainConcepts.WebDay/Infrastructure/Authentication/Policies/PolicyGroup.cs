@@ -9,7 +9,7 @@ namespace PlainConcepts.WebDay.Infrastructure.Authentication.Policies
     {
         public static string[] CreateUserGroupPolicy = {
             Policy.Admin,
-            Policy.Reader
+            Policy.Writer
         };
 
         public static string[] ListUsersGroupPolicy =

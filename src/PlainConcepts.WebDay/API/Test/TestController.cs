@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PlainConcepts.WebDay.API.Test.Request;
 using PlainConcepts.WebDay.Infrastructure.Binders;
 
 namespace PlainConcepts.WebDay.API.Test
@@ -23,11 +24,11 @@ namespace PlainConcepts.WebDay.API.Test
             return Ok();
         }
 
-        [HttpPost, Route("bind")]
+        [HttpGet, Route("bind")]
         public  IActionResult ModelBindingTest
-            ([ModelBinder(BinderType = typeof(UserInfoBinder))] dynamic userInfo)
+            ([ModelBinder(BinderType = typeof(PaginationRequestBinder))] InboundRequest inboundRequest)
         {
-            return Ok(userInfo);
+            return Ok(inboundRequest);
         }
     }
 }
