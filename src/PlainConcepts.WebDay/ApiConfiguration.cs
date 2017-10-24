@@ -67,7 +67,7 @@ namespace PlainConcepts.WebDay
             app.Use(async (context, next) =>
             {
                 var logger = context.RequestServices.GetService<ILogger<ApiConfiguration>>();
-                logger.LogDebug($"Navigating to {context.Request.Path}");
+                logger.LogDebug($"Executing {context.Request.Method} : {context.Request.Path}");
                 await next();
             });
             app.UseAuthentication();
