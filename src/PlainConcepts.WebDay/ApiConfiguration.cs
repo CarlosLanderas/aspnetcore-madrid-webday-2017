@@ -18,6 +18,7 @@ using PlainConcepts.WebDay.Infrastructure.Authentication;
 using PlainConcepts.WebDay.Infrastructure.Authentication.Handlers;
 using PlainConcepts.WebDay.Infrastructure.DataContext;
 using PlainConcepts.WebDay.Infrastructure.MIddleware;
+using PlainConcepts.WebDay.Infrastructure.Repositories;
 
 namespace PlainConcepts.WebDay
 {
@@ -36,6 +37,9 @@ namespace PlainConcepts.WebDay
             {
                 options.UseSqlServer(Configuration.GetSection("ConnectionString").Value);
             });
+
+            services.AddApplicationQueries(Configuration);
+            services.AddTransient<IUserRepository, UserRepository>();
 
             services.AddScoped<IAuthorizationHandler, UserRightsHandler>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

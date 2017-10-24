@@ -10,9 +10,9 @@ namespace PlainConcepts.WebDay.Model
     {
         private User(string userName, string name, string surname)
         {
-            UserName = userName;
-            Name = name;
-            Surname = surname;
+            UserName = userName ?? throw new ArgumentNullException(nameof(userName));
+            Name = name ?? throw new ArgumentNullException(nameof(name));
+            Surname = surname ?? throw new ArgumentNullException(nameof(surname));
         }
         private User() { }
         public string Name { get; protected set; }

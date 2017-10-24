@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
@@ -8,7 +11,9 @@ using Newtonsoft.Json.Serialization;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using PlainConcepts.WebDay;
+using PlainConcepts.WebDay.Application.Queries;
 using PlainConcepts.WebDay.Infrastructure.Authentication;
 using PlainConcepts.WebDay.Infrastructure.Authentication.Policies;
 using PlainConcepts.WebDay.Infrastructure.Authentication.Requirements;
@@ -45,6 +50,14 @@ namespace Microsoft.Extensions.DependencyInjection
                 }).AddFluentValidation(v => v.RegisterValidatorsFromAssembly(typeof(ApiConfiguration).Assembly));
             
             return services;
+        }
+
+        public static void AddApplicationQueries(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddTransient<IDbConnection>(c =>
+                new SqlConnection(configuration.GetSection("ConnectionString").Value));
+
+            services.AddTransient<GetUsersQuery>();
         }
     }
 }
