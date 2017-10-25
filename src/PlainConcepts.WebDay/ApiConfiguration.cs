@@ -30,7 +30,7 @@ namespace PlainConcepts.WebDay
         }
 
         public IConfiguration Configuration { get; }
-        
+
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WebDayDbContext>(options =>
@@ -38,10 +38,11 @@ namespace PlainConcepts.WebDay
                 options.UseSqlServer(Configuration.GetSection("ConnectionString").Value);
             });
 
-            services.AddApplicationQueries(Configuration);
-            services.AddTransient<IUserRepository, UserRepository>();
 
+            services.AddTransient<IUserRepository, UserRepository>();
             services.AddScoped<IAuthorizationHandler, UserRightsHandler>();
+            services.AddApplicationQueries(Configuration);
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -57,7 +58,7 @@ namespace PlainConcepts.WebDay
                 };
 
             });
-            
+
             services.AddMvcCoreDefault();
         }
 
