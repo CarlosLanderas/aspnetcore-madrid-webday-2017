@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore.Query.ExpressionVisitors.Internal;
-using Microsoft.Extensions.DependencyInjection;
-using PlainConcepts.WebDay.Infrastructure.Authentication.Requirements;
+using PlainConcepts.WebDay.Infrastructure.Authorization.Requirements;
 
-namespace PlainConcepts.WebDay.Infrastructure.Authentication.Handlers
+namespace PlainConcepts.WebDay.Infrastructure.Authorization.Handlers
 {
     public class UserRightsHandler : AuthorizationHandler<UserLevelRequirement>
     {

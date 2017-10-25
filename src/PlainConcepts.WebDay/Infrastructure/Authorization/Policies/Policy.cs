@@ -1,5 +1,5 @@
 ﻿
-namespace PlainConcepts.WebDay.Infrastructure.Authentication.Policies
+namespace PlainConcepts.WebDay.Infrastructure.Authorization.Policies
 {
     public class Policy
     {

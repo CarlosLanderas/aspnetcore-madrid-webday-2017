@@ -15,7 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using PlainConcepts.WebDay.Infrastructure.Authentication;
-using PlainConcepts.WebDay.Infrastructure.Authentication.Handlers;
+using PlainConcepts.WebDay.Infrastructure.Authorization.Handlers;
 using PlainConcepts.WebDay.Infrastructure.DataContext;
 using PlainConcepts.WebDay.Infrastructure.MIddleware;
 using PlainConcepts.WebDay.Infrastructure.Repositories;

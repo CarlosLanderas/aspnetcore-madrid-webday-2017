@@ -9,7 +9,6 @@ using Microsoft.EntityFrameworkCore;
 using PlainConcepts.WebDay.Application.Queries;
 using PlainConcepts.WebDay.API.Users.Requests;
 using PlainConcepts.WebDay.Infrastructure.Authentication;
-using PlainConcepts.WebDay.Infrastructure.Authentication.Policies;
 using PlainConcepts.WebDay.Infrastructure.DataContext;
 using PlainConcepts.WebDay.Infrastructure.Repositories;
 using PlainConcepts.WebDay.Model;
