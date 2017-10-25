@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using PlainConcepts.WebDay;
 using PlainConcepts.WebDay.Application.Queries;
 using PlainConcepts.WebDay.Infrastructure.Authentication;
+using PlainConcepts.WebDay.Infrastructure.Authorization;
 using PlainConcepts.WebDay.Infrastructure.Authorization.Policies;
 using PlainConcepts.WebDay.Infrastructure.Authorization.Requirements;
 using PlainConcepts.WebDay.Infrastructure.Binders;
