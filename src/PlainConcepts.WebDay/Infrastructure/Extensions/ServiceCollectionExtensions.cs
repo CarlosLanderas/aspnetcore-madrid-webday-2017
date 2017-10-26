@@ -55,7 +55,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
         public static void AddApplicationQueries(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddTransient<IDbConnection>(c =>
+            services.AddScoped<IDbConnection>(c =>
                 new SqlConnection(configuration.GetSection("ConnectionString").Value));
 
             services.AddTransient<GetUsersQuery>();

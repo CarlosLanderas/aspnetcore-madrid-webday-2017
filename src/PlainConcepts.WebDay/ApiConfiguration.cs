@@ -37,13 +37,13 @@ namespace PlainConcepts.WebDay
             {
                 options.UseSqlServer(Configuration.GetSection("ConnectionString").Value);
             });
-
-
+            
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddScoped<IAuthorizationHandler, UserRightsHandler>();
             services.AddApplicationQueries(Configuration);
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {

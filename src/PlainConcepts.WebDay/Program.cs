@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using PlainConcepts.WebDay.Infrastructure.DataContext;
@@ -17,7 +19,7 @@ namespace PlainConcepts.WebDay
         public static void Main(string[] args)
         {
             BuildWebHost(args)
-                .Migrate<WebDayDbContext>(c => c.Seed())
+               // .Migrate<WebDayDbContext>(c => c.Seed())
                 .Run();
         }
         public static IWebHost BuildWebHost(string[] args) =>
@@ -25,4 +27,5 @@ namespace PlainConcepts.WebDay
                 .UseStartup<ApiConfiguration>()
                 .Build();
     }
+    
 }

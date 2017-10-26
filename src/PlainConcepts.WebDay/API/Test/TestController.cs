@@ -14,10 +14,12 @@ namespace PlainConcepts.WebDay.API.Test
     {
 
         [HttpGet]
-        public async Task<IActionResult> LongRunningTask([FromQuery] int seconds)
+        public async Task<IActionResult> LongRunningTask([FromQuery] int seconds,
+            CancellationToken token)
         {
             for (int i = 0; i < seconds; i++)
             {
+                token.ThrowIfCancellationRequested();   
                 Console.WriteLine($"Task executed for {i} seconds");
                 await Task.Delay(1000);
             }

@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace PlainConcepts.WebDay.Infrastructure.MIddleware
 {
-    public class TimingMiddleware
+    public class TimingMiddleware 
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<TimingMiddleware> _logger;
@@ -18,14 +18,12 @@ namespace PlainConcepts.WebDay.Infrastructure.MIddleware
             _next = next;
             _logger = logger;
         }
-
-        public async Task Invoke(HttpContext context)
+        public async Task InvokeAsync(HttpContext context)
         {
             var stopWatch = Stopwatch.StartNew();
             await _next(context);
             stopWatch.Stop();
             _logger.LogDebug($"Request took {stopWatch.ElapsedMilliseconds} ms");
         }
-
     }
 }

@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -11,10 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using PlainConcepts.WebDay.API.Auth.Requests;
-using PlainConcepts.WebDay.Infrastructure.Authentication;
 using PlainConcepts.WebDay.Infrastructure.DataContext;
 
-namespace PlainConcepts.WebDay.API.Authentication
+namespace PlainConcepts.WebDay.API.Auth
 {
     [Route("api/token")]
     public class AuthController : ControllerBase
@@ -69,7 +67,7 @@ namespace PlainConcepts.WebDay.API.Authentication
                 var response = new
                 {
                     access_token = encodedJwt,
-                    expires_in = 18000
+                    expires_in = 50000
                 };
 
                 return Ok(response);
