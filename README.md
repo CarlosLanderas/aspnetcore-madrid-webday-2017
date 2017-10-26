@@ -1,4 +1,4 @@
-![Logo](https://i.stack.imgur.com/FAYL2.png)
+![Logo](https://workablehr.s3.amazonaws.com/uploads/account/logo/64732/resize__2_.png)
 # Madrid Web Day 2017
 My asp.net core talk at Plainconcepts Madrid web day event
 
